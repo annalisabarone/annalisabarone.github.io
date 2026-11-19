@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+  ContaCHO — pagina pubblica "Come iniziare"
+  ------------------------------------------------------------------
+  Scopo:   istruzioni leggibili PRIMA di aprire l'app (che richiede un
+           account Claude e l'invito dell'Owner).
+  Dove:    GitHub Pages, repository annalisabarone/annalisabarone.github.io
+           → https://annalisabarone.github.io  (copiare questa cartella
+           nella radice di quel repository: index.html + icone).
+  Vincoli: pagina statica, nessuno script, nessun tracciamento, nessuna
+           risorsa esterna (font, CDN, analytics): niente cookie e niente
+           dati inviati a terzi da questa pagina.
+  Testi:   allineati all'Aiuto dell'app (app/www/index.html, sezione
+           "L'icona di ContaCho") e alle regole del db (dossier §3).
+           Se cambiano nell'app, aggiornarli anche qui.
+-->
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ContaCHO — Come iniziare</title>
+  <meta name="description" content="Come iniziare a usare ContaCHO, l'app per contare i carboidrati dei pasti con le tabelle CREA.">
+  <!-- Icone: favicon per il browser, apple-touch-icon per "Aggiungi a Home" di questa pagina -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="iconaContaCho.png">
+  <style>
+    /* Colori ripresi dall'icona (blu notte) e dall'app; rispettano il tema scuro del sistema */
+    :root{
+      --fondo:#f6f7fb; --carta:#ffffff; --testo:#1c2333; --tenue:#5b6478;
+      --blu:#16213e; --accento:#2f6fdf; --bordo:#dfe3ec; --avviso:#fff6db; --avvisoBordo:#e9c75a;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --fondo:#0f1424; --carta:#171e33; --testo:#e8ecf5; --tenue:#a5aec2;
+        --blu:#0b1020; --accento:#7aa7ff; --bordo:#2a3350; --avviso:#2e2a17; --avvisoBordo:#8a7428;
+      }
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; background:var(--fondo); color:var(--testo);
+      font:17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    /* Fascia superiore con icona e titolo */
+    header{ background:var(--blu); color:#fff; padding:28px 20px 24px; }
+    .intestazione{ max-width:720px; margin:0 auto; display:flex; gap:16px; align-items:center; }
+    .intestazione img{ width:72px; height:72px; border-radius:16px; flex:none; }
+    header h1{ margin:0; font-size:28px; line-height:1.2; }
+    header p{ margin:4px 0 0; color:#c9d3ee; }
+    main{ max-width:720px; margin:0 auto; padding:8px 20px 40px; }
+    /* Ogni passo è una "carta" numerata */
+    section{
+      background:var(--carta); border:1px solid var(--bordo); border-radius:14px;
+      padding:18px 20px; margin:18px 0;
+    }
+    h2{ margin:0 0 8px; font-size:20px; }
+    h3{ margin:16px 0 4px; font-size:17px; }
+    .numero{
+      display:inline-grid; place-items:center; width:28px; height:28px; margin-right:8px;
+      border-radius:50%; background:var(--accento); color:#fff; font-size:15px; vertical-align:2px;
+    }
+    ol, ul{ padding-left:22px; margin:6px 0; }
+    li{ margin:4px 0; }
+    a{ color:var(--accento); }
+    .avviso{
+      background:var(--avviso); border:1px solid var(--avvisoBordo); border-radius:10px;
+      padding:10px 14px; margin-top:12px; font-size:15px;
+    }
+    .tenue{ color:var(--tenue); font-size:15px; }
+    footer{ max-width:720px; margin:0 auto; padding:0 20px 40px; color:var(--tenue); font-size:14px; }
+    /* Indice rapido in cima */
+    nav ul{ list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:8px 14px; font-size:15px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="intestazione">
+    <img src="iconaContaCho.png" alt="Icona di ContaCHO" width="72" height="72">
+    <div>
+      <h1>ContaCHO — Come iniziare</h1>
+      <p>Conta i carboidrati dei tuoi pasti con le tabelle CREA</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Indice: utile su telefono per saltare al punto che serve -->
+  <nav aria-label="Indice">
+    <ul>
+      <li><a href="#cosa">Che cos’è</a></li>
+      <li><a href="#serve">Cosa serve</a></li>
+      <li><a href="#apri">Aprire l’app</a></li>
+      <li><a href="#icona">Icona su iPhone e Mac</a></li>
+      <li><a href="#primi">Primi passi</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#problemi">Problemi</a></li>
+    </ul>
+  </nav>
+
+  <section id="cosa">
+    <h2>Che cos’è</h2>
+    <p>ContaCHO calcola i carboidrati (CHO) di un pasto partendo dal nome del piatto o dai suoi ingredienti
+      — per esempio “gricia, rigatoni 100 g” — usando le tabelle di composizione degli alimenti del
+      <strong>CREA – Centro di ricerca Alimenti e Nutrizione</strong>. Tiene un diario dei pasti, annota peso,
+      glicemia e pressione, e stampa il diario in PDF.</p>
+    <div class="avviso"><strong>Avvertenza.</strong> Valori indicativi a scopo alimentare, non destinati a decisioni
+      terapeutiche. ContaCHO non è un dispositivo medico: la glicemia è solo un’annotazione e l’app non la interpreta mai.</div>
+  </section>
+
+  <section id="serve">
+    <h2><span class="numero">1</span>Cosa serve</h2>
+    <ul>
+      <li><strong>Un account Claude</strong>, anche gratuito: si crea su <a href="https://claude.ai" rel="noopener">claude.ai</a>
+        con la propria email. ContaCHO funziona dentro Claude e usa il tuo account per riconoscere i piatti e
+        per conservare i tuoi dati.</li>
+      <li><strong>L’invito</strong> di Annalisa Barone: comunicale l’email con cui hai creato l’account Claude,
+        così potrà condividere l’app con te.</li>
+      <li>Un telefono, un tablet o un computer con un browser aggiornato (Safari, Chrome, Edge, Firefox),
+        oppure l’app Claude per iPhone o Android.</li>
+    </ul>
+  </section>
+
+  <section id="apri">
+    <h2><span class="numero">2</span>Aprire l’app</h2>
+    <ol>
+      <li>Apri il link di ContaCHO che hai ricevuto con l’invito.</li>
+      <li>Se richiesto, accedi a Claude con l’email che hai comunicato.</li>
+      <li>Al primo uso l’app ti chiede un <strong>nickname</strong> pubblico (unico e definitivo: compare accanto
+        ai prodotti che proponi) e, se vuoi, <strong>altezza e peso</strong>. Puoi rispondere “Più tardi”:
+        la domanda torna dopo 24 ore.</li>
+    </ol>
+    <p class="tenue">Il link è sempre lo stesso: apre ogni volta l’ultima versione dell’app.</p>
+  </section>
+
+  <section id="icona">
+    <h2><span class="numero">3</span>Un’icona sul telefono o sul Mac</h2>
+    <p>Per aprire ContaCHO con un tocco, come un’app. Servono l’immagine dell’icona e il link dell’app.</p>
+    <p><img src="iconaContaCho.png" alt="Icona di ContaCHO da salvare" width="90" height="90" style="border-radius:20px"><br>
+      <span class="tenue">Su iPhone tieni premuta l’immagine → <em>Salva nelle Foto</em>; su Mac clic destro → <em>Salva immagine come…</em>
+      La stessa icona è anche nell’app, in <strong>? → L’icona di ContaCho su iPhone e Mac</strong>, con il pulsante per copiare il link.</span></p>
+
+    <h3>iPhone e iPad (app Comandi, già installata)</h3>
+    <ol>
+      <li>Apri <strong>Comandi</strong> e tocca <strong>＋</strong>.</li>
+      <li>Tocca <strong>Aggiungi azione</strong>, cerca <strong>Apri URL</strong> e incolla il link dell’app.</li>
+      <li>In alto tocca il nome del comando, poi <strong>Aggiungi a schermata Home</strong>.</li>
+      <li>Tocca l’icona, scegli <strong>Scegli foto</strong> e seleziona l’icona salvata; come nome scrivi
+        <em>ContaCho</em> e tocca <strong>Aggiungi</strong>.</li>
+    </ol>
+
+    <h3>Mac (Safari, macOS Sonoma o successivo)</h3>
+    <ol>
+      <li>Apri il link dell’app in Safari.</li>
+      <li>Menu <strong>File → Aggiungi al Dock…</strong></li>
+      <li>Clicca sull’icona mostrata nella finestra e scegli l’immagine salvata; come nome scrivi
+        <em>ContaCho</em> e clicca <strong>Aggiungi</strong>.</li>
+    </ol>
+  </section>
+
+  <section id="primi">
+    <h2><span class="numero">4</span>Primi passi</h2>
+    <ul>
+      <li><strong>🍽️ Pasto</strong>: scegli giorno e pasto, scrivi quello che mangi (“pasta al pomodoro, spaghetti 80 g”)
+        oppure usa “+ Ingrediente”; correggi le quantità e tocca <strong>✓ Aggiungi</strong>.
+        “Calcola CHO” calcola soltanto: per registrare serve ✓ Aggiungi.</li>
+      <li><strong>🏷️ Prodotti</strong>: i prodotti confezionati con foto, codice a barre e valori dell’etichetta.
+        Trovi già un catalogo di prodotti verificati; quelli che aggiungi tu restano tuoi, e puoi proporli per il catalogo comune.</li>
+      <li><strong>📏 Misure</strong>: peso (con indice di massa corporea), glicemia e pressione, tutti facoltativi.</li>
+      <li><strong>📅 Diario</strong>: i giorni registrati; tocca una voce per correggerla. Da qui stampi il PDF.</li>
+      <li><strong>?</strong>: l’aiuto completo, le fonti e la privacy.</li>
+    </ul>
+  </section>
+
+  <section id="privacy">
+    <h2><span class="numero">5</span>Privacy, in breve</h2>
+    <ul>
+      <li>Diario, misure, piatti e prodotti personali stanno nella tua <strong>area privata</strong> dell’app,
+        legata al tuo account Claude e visibile solo a te, su ogni dispositivo.</li>
+      <li>Sono visibili agli altri utenti solo il tuo <strong>nickname</strong> e i prodotti che vengono accettati nel catalogo comune.</li>
+      <li>Se proponi un prodotto per il catalogo, l’email serve solo a chi verifica la proposta e
+        <strong>viene cancellata dopo la decisione</strong>.</li>
+      <li>Il nome sulla copertina del PDF è facoltativo, resta cifrato sul tuo dispositivo e serve solo a quello.</li>
+      <li>Il testo del piatto viene elaborato da Claude, secondo
+        l’<a href="https://www.anthropic.com/legal/privacy" rel="noopener">informativa privacy di Anthropic</a>.</li>
+      <li>Le statistiche si fanno solo con file che <strong>tu</strong> scegli di esportare e inviare, con un codice al posto del nome.</li>
+    </ul>
+    <p class="tenue">Questa pagina non usa cookie, script o strumenti di analisi.</p>
+  </section>
+
+  <section id="problemi">
+    <h2><span class="numero">6</span>Se qualcosa non va</h2>
+    <ul>
+      <li>Nell’app tocca <strong>? → ✉️ Segnala un problema</strong>: si apre la tua app di posta con un messaggio già
+        compilato (versione, pagina, dispositivo). Aggiungi cosa è successo e, se puoi, uno screenshot.</li>
+      <li>Se l’app sembra ferma o non aggiornata, chiudila e riaprila: al riavvio carica l’ultima versione.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>ContaCHO è realizzata da Annalisa Barone con l’aiuto di Claude.<br>
+    Dati di composizione degli alimenti: CREA – Centro di ricerca Alimenti e Nutrizione,
+    <a href="https://www.crea.gov.it/alimenti-e-nutrizione" rel="noopener">crea.gov.it/alimenti-e-nutrizione</a> ·
+    <a href="https://www.alimentinutrizione.it" rel="noopener">alimentinutrizione.it</a>.<br>
+    Catalogo dei prodotti di marca: <a href="https://github.com/annalisabarone/contachoCatalogo" rel="noopener">annalisabarone/contachoCatalogo</a>.</p>
+</footer>
+
+</body>
+</html>
